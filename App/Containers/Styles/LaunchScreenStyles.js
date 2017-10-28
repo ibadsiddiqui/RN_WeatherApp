@@ -3,36 +3,48 @@ import { Metrics, ApplicationStyles } from '../../Themes/'
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
-  container: {
-    paddingBottom: Metrics.baseMargin
+  mainContainer: {
+    paddingBottom: Metrics.baseMargin,
+    backgroundColor: '#fff',    
   },
+
+  rowView:{
+    flexDirection: 'row'
+  },
+
+  contentContainer: {
+    paddingBottom:18
+  },
+
   header: {
-    marginTop: Metrics.doubleSection - 40,
-    marginLeft: Metrics.screenWidth - 230,
+    marginTop: Metrics.doubleSection - 37,
+    marginLeft: Metrics.screenHeight/2.5,
     color: '#000',
+    backgroundColor: '#fff',
     fontSize: 28,
     fontWeight: '700',
     fontFamily: "cursive",
   },
-
-  contentContainer: {
-    paddingVertical: 10,
-    paddingBottom:20
+  
+  tableColumn:{
+    // borderRightColor:'black',
+    // borderRightWidth: 1,
+    marginRight: 5,
+    marginTop: 18,
+    marginLeft: Metrics.baseMargin,
+    paddingLeft: 8,
+    paddingRight: 3
+    
   },
 
   AddBtnRow:{
     flexDirection: 'row',
-    marginTop: 10,
-    paddingLeft: Metrics.section * 5 + 5,
-    marginTop: Metrics.screenHeight - (Metrics.screenWidth/4.8),
-    position: 'absolute',
-    width: Metrics.screenWidth,
-    backgroundColor: 'white',
-    paddingBottom: 40
-    // marginLeft: Metrics.screenHeight - (Metrics.screenWidth + Metrics.section)
+    marginTop: 8,
+    marginLeft: Metrics.screenHeight-120,
+    position: 'absolute'
   },
   btnText:{
-    marginTop: 13,
+    marginTop: 16,
     fontSize: 14,
     color: '#000',
     marginRight: 5

@@ -12,12 +12,17 @@ import {
 import {Icon,List, ListItem} from 'react-native-elements'
 import {navigate} from 'react-navigation'
 
+import Orientation from 'react-native-orientation'
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 
 
 export default class LaunchScreen extends Component {
   
+  componentWillMount(){
+    Orientation.lockToLandscape();
+  }
+
   render () {
     const list = [
       {
@@ -82,39 +87,51 @@ export default class LaunchScreen extends Component {
       },
       //... // more items
     ]
-    
     return (
       <View style={styles.mainContainer}>
-        <StatusBar backgroundColor="transparent" transulcent={true}/>
+        <StatusBar hidden={true}/>
+        <View>
           <Text style={styles.header}>WindLove</Text>
-          
-          <ScrollView
-            automaticallyAdjustContentInsets 
-            contentContainerStyle={styles.contentContainer}>
-            <List containerStyle={{marginBottom: 20}}>
-              {
-                list.map((l, i) => (
-                  <ListItem
-                    roundAvatar
-                    avatar={{uri:l.avatar_url}}
-                    key={i}
-                    title={l.name}
-                  />
-                ))
-              }
-            </List>    
-          </ScrollView>
 
           <TouchableOpacity 
-            onPress={() => this.props.navigation.navigate('newScreen')} 
+            onPress={() => this.props.navigation.navigate('InputScreen')} 
             style={styles.AddBtnRow}>
-          
+            
             <Text style={styles.btnText}>Add Station </Text>
             <Icon name='add'  color='#fff' style={styles.iconStyle}/>
-        
           </TouchableOpacity>
-        
 
+            
+          <View style={[styles.rowView]}>
+            <Text style={styles.tableColumn} >Station Id</Text>
+            <Text style={styles.tableColumn} >Station Name</Text>
+            <Text style={styles.tableColumn}>Reading Time</Text>
+            <Text style={styles.tableColumn}>Temp</Text>
+            <Text style={styles.tableColumn}>Gust</Text>
+            <Text style={styles.tableColumn}>Wind Direction</Text>
+            <Text style={styles.tableColumn}>Wind Speed</Text>
+          </View>
+        </View>
+              
+          
+        <ScrollView
+          automaticallyAdjustContentInsets 
+          contentContainerStyle={styles.contentContainer}>
+          
+          <List containerStyle={{marginBottom: 20}}>
+            {
+              list.map((l, i) => (
+                <ListItem
+                  roundAvatar
+                  avatar={{uri:l.avatar_url}}
+                  key={i}
+                  title={l.name}
+                />
+              ))
+            }
+          </List>    
+
+        </ScrollView>
       </View>
     )
   }
