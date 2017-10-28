@@ -19,7 +19,8 @@ import styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends Component {
   
-  componentWillMount(){
+  constructor(){
+    super()
     Orientation.lockToLandscape();
   }
 
