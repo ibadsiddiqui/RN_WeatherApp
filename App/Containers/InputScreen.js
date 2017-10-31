@@ -22,7 +22,12 @@ import styles from './Styles/InputScreenStyles'
 import firebase from 'firebase'
 
 export default class InputScreen extends Component {
-
+    constructor(){
+        super();
+        this.state = {
+            stationID:'',
+        }
+    }
     render () {
         let database = firebase.database();
         return (
